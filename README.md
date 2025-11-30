@@ -26,8 +26,6 @@ Sistema de Estados: Telas de Jogo e Game Over com reinício instantâneo.
 O jogador 1 se movimenta com WASD e atira com a barra de espaço.
 O jogador 2 se movimenta com as setas do teclado e atira com Ctrl.
 
-The Goob Station [docs site](https://docs.goobstation.com/) has documentation on GS14's content, engine, game design, and more. It also have lots of resources for new contributors to the project.
-
 ## 🚀 Como Executar
 ### Pré-requisitos
 Ter o Java JDK instalado.
