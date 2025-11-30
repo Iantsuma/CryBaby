@@ -24,6 +24,7 @@ Sistema de Estados: Telas de Jogo e Game Over com reinício instantâneo.
 ## 🕹️ Controles
 
 O jogador 1 se movimenta com WASD e atira com a barra de espaço.
+
 O jogador 2 se movimenta com as setas do teclado e atira com Ctrl.
 
 ## 🚀 Como Executar
@@ -34,9 +35,13 @@ Uma IDE (Eclipse, IntelliJ, NetBeans) ou terminal.
 
 ### Passos
 1.Clone este repositório:
+
 2.git clone https://github.com/Iantsuma/CryBaby.git
+
 3.Importe o projeto na sua IDE favorita.
+
 4.Localize a classe principal (geralmente Main.java) e execute.
+
 
 ## 📂 Estrutura do Projeto
 
