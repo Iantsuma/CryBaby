@@ -14,7 +14,9 @@ import main.Panel;
 public class Player extends Entity {
 	Panel gp;
 	KeyHandler keyH;
+	public int fireRate = 120;
 	public int cooldown = 0;
+	public int powerUpTimer = 0;
 
 	public int playerId;
 	
@@ -98,6 +100,15 @@ public class Player extends Entity {
 	    boolean leftPressed 	= false;
 	    boolean rightPressed 	= false;
 	    
+	    if (powerUpTimer > 0) {
+            powerUpTimer--; // Diminui 1 a cada frame
+            System.out.println("POWER UP TIMER: "+ powerUpTimer);
+            
+            // Se chegou a zero, acabiu
+            if (powerUpTimer == 0) {
+                fireRate = 120; // Volta a velocidade normal
+            }
+        }
 	    // 1. DETERMINAR QUAL O INPUT A LER
 	    if (playerId == 1) { // Jogador 1 (WASD e espaços)
 	        upPressed    = keyH.upK;
@@ -124,7 +135,7 @@ public class Player extends Entity {
 	        
 	        gp.projectiles.add(newShot);
 	        
-	        cooldown = 120; // Define o cooldown (Exemplo: 30 frames = 0.5 segundos em 60 FPS) tive que diminuir pq tava impossível
+	        cooldown = fireRate; // Define o cooldown (Exemplo: 30 frames = 0.5 segundos em 60 FPS) tive que diminuir pq tava impossível
 	    }
 	    if (cooldown > 0) {
 	        cooldown--;
