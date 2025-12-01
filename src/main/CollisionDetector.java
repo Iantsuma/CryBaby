@@ -12,6 +12,14 @@ public class CollisionDetector {
 	
 	public void checkTile (Entity entity) {
 		
+		if (entity instanceof Projectile) {
+			if (((Projectile)entity).spectral==true) {
+				return;
+			}
+		}
+		
+		
+		
 		// Calcunado as bordas de uma entidade
 		int entityLeftEdge = entity.x + entity.collisionBox.x;
 		int entityRightEdge = entity.x + entity.collisionBox.x + entity.collisionBox.width;

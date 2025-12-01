@@ -185,8 +185,7 @@ public class Panel extends JPanel implements Runnable{
 	            // SE PLAYER 1 PEGAR
 	            if(puRect.intersects(p1Rect)) {
 	                System.out.println("Player 1 pegou PowerUp!");
-	                player.fireRate = 10;     
-	                player.powerUpTimer = 300; 
+	                player.activatePowerUp(pu.type);
 	                powerUps.remove(i); // Remove o item da tela
 	                // Opcional: spawnar outro logo em seguida
 	                // spawnPowerUp(); 
@@ -194,8 +193,7 @@ public class Panel extends JPanel implements Runnable{
 	            // SE PLAYER 2 PEGAR
 	            else if(puRect.intersects(p2Rect)) {
 	                System.out.println("Player 2 pegou PowerUp!");
-	                player2.fireRate = 10;       
-	                player2.powerUpTimer = 300;  
+	                player2.activatePowerUp(pu.type);
 	                powerUps.remove(i);
 	            }
 	        }
@@ -267,11 +265,11 @@ public class Panel extends JPanel implements Runnable{
 	        row = (int)(Math.random() * maxScreenRow);
 	        
 	        if(tileM.mapTileNum[col][row] == 0) {
-	            
+	            int type = (int)(Math.random()*2);
 	            int worldX = col * realTileSize;
 	            int worldY = row * realTileSize;
 	            
-	            powerUps.add(new PowerUp(this, worldX, worldY));
+	            powerUps.add(new PowerUp(this, worldX, worldY, type));
 	            validSpot = true;
 	            System.out.println("PowerUp Spawnado em: " + col + "," + row);
 	        }

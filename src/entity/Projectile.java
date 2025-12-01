@@ -2,6 +2,7 @@ package entity;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -9,14 +10,28 @@ import javax.imageio.ImageIO;
 import main.Panel;
 
 public class Projectile extends Entity{
+	
 	Panel gp;
 	public int ownerId;
-	public Projectile(Panel gp, int x, int y, String direction, int ownerId) {
+	public boolean spectral = false;
+	public int type;
+	BufferedImage imgNormal, imgSpectral, imgBig;
+	
+	
+	
+	
+	
+	
+	public Projectile(Panel gp, int x, int y, String direction, int ownerId, int type) {
 		this.gp = gp;
 		this.x = x;
 		this.y = y;
 		this.direction = direction;
 		this. ownerId = ownerId;
+		this.type = type;
+		if (this.type == 1) {
+			this.spectral = true;
+		}
 		
 		this.speed = 10;
 		int scale = gp.realTileSize / gp.tileSize;
@@ -40,9 +55,11 @@ public class Projectile extends Entity{
 	
 	public void getProjectileImage() {
 		try {
-			up0 = ImageIO.read(getClass().getResourceAsStream("/projectiles/tear.png"));
-		}catch(IOException e) {
-			e.printStackTrace();
+			imgNormal = ImageIO.read(getClass().getResourceAsStream("/projectiles/tear.png"));
+			imgSpectral = ImageIO.read(getClass().getResourceAsStream("/projectiles/tear_red.png"));
+			imgBig = ImageIO.read(getClass().getResourceAsStream("/projectiles/tear.png"));
+		} catch(IOException e) {
+            e.printStackTrace();
 		}
 	}
 	
@@ -77,7 +94,11 @@ public class Projectile extends Entity{
 		
 	public void draw(Graphics2D g2) {
 		int drawSize = gp.realTileSize;
-		g2.drawImage(up0, x + (gp.realTileSize / 2 - drawSize / 2), y + (gp.realTileSize / 2 - drawSize / 2), drawSize, drawSize, null);
+		BufferedImage image = imgNormal;
+		if (type == 1) {
+			image = imgSpectral;
+		}
+		g2.drawImage(image, x + (gp.realTileSize / 2 - drawSize / 2), y + (gp.realTileSize / 2 - drawSize / 2), drawSize, drawSize, null);
 	}
 	
 	
